@@ -1,0 +1,28 @@
+<div class="text-center">
+  <div class="rounded-circle">
+    <img class="rounded img-fluid" src="<%= (@user, { size: 300 }) %>" alt=""> 　　<!--アイコンURL変更-->
+  </div>
+  <p>
+    <%= @user.name %>
+  </p>
+</div>
+
+<div class="text-right">
+  <%= link_to %> <%= link_to %>      <!-- フォロー、お気に入りボタン実装-->
+</div>
+
+<hr>
+
+<div class="rounded border border-dark">練習時間</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">col-md-5</div>                                      <!--練習時間登録-->
+    <div class="offset-md-2 col-md-5">offset-md-2 col-md-5</div>
+  </div>
+</div>
+
+<button class="btn btn-primary" type="submit">投稿する</button>
+
+<div class="rounded border border-dark">最新の投稿</div>
+
+<!--最新の投稿の表示-->
