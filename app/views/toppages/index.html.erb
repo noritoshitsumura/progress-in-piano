@@ -1,10 +1,15 @@
-<div class="text-center">
-  <h1>Progress in Piano</h1>
-  <div class="lead">
-    <p>ピアノをもっと上手に弾きたいあなたへ。</p>
-    <p>Progress in Pianoは、あなたのピアノの</p>
-    <p>上達をサポートします。</p>
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<% else %>
+  <div class="text-center">
+    <h1>Progress in Piano</h1>
+    <div class="lead">
+      <p>ピアノをもっと上手に弾きたいあなたへ。</p>
+      <p>Progress in Pianoは、あなたのピアノの</p>
+      <p>上達をサポートします。</p>
+    </div>
+    <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    <p><%= link_to 'ログイン', login_path %></p>
   </div>
-  <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
-</div>
+<% end %>
 
