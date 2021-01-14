@@ -8,8 +8,12 @@
       <p>Progress in Pianoは、あなたのピアノの</p>
       <p>上達をサポートします。</p>
     </div>
-    <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
-    <p><%= link_to 'ログイン', login_path %></p>
+    <div class="user-register">
+      <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+    <div class="user-login">
+      <p><%= link_to 'ログイン', login_path %></p>
+    </div>
   </div>
 <% end %>
 

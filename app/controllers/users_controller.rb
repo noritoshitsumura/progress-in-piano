@@ -29,6 +29,12 @@ class UsersController < ApplicationController
   def destroy
   end
   
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
   private
   
   def user_params
