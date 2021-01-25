@@ -1,0 +1,16 @@
+.rank-title{
+    margin-bottom: 40px;
+}
+
+.table-ranking td {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.5rem;
+}
+
+.table-ranking td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+

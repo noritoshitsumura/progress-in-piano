@@ -4,11 +4,17 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+  mount_uploader :image, ImageUploader
   has_secure_password
   
   has_many :microposts
+  has_many :practices
+  
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
+  
+  has_many :favorites
+  has_many :likes, through: :favorites, source: :micropost
   
   
   def follow(other_user)
@@ -26,4 +32,16 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
   
+  def favorite(other_micropost)
+    self.favorites.find_or_create_by(micropost_id: other_micropost.id)
+  end
+
+  def unfavorite(other_micropost)
+    favorite = self.favorites.find_by(micropost_id: other_micropost.id)
+    favorite.destroy if favorite
+  end
+
+  def favorite?(other_micropost)
+    self.likes.include?(other_micropost)
+  end
 end

@@ -1,5 +1,29 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <div class="text-center">
+    <h1 class="title_name">Progress in Piano</h1>
+  </div>
+    
+  <div class="container">
+    <div class="row"> 
+      <div class="col-md-3">
+        <figure class="text-center">
+          <% if current_user.image? %>                                                              
+            <%= image_tag current_user.image.thumb.url %>
+          <% end %>
+          <figcaption class="text-start user_name2"><%= current_user.name %></figcaption>
+        </figure>
+      </div>
+      <div class="col-md-9">
+        <div class="d-flex justify-content-start">
+          <ul class="like2">
+            <li><%= link_to 'フォロー', followings_user_path(current_user) %></li>
+            <li><%= link_to 'お気に入り', likes_user_path(current_user) %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 <% else %>
   <div class="text-center">
     <h1>Progress in Piano</h1>

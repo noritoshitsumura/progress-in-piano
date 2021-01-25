@@ -1,29 +1,66 @@
-<div class="container">
-  <div class="row">
-    <!--<div class="justify-content-center">-->
-    <!--  <div class="rounded-circle">-->
-    <!--    <img class="rounded img-fluid" src="<%= (@user, { size: 300 }) %>" alt=""> 　　<!--アイコンURL変更-->-->
-    <!--  </div>-->
-      <p>
-        <%= @user.name %>
-      </p>
+<div id="profile">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <figure>
+        <% if @user.image? %>                                                              
+          <%= image_tag @user.image.thumb.url %>
+        <% end %> 　
+        <figcaption class="text-center user_name"><%= @user.name %></figcaption>
+      </figure>
     </div>
     
-    <!--<div class="justify-content-end">-->
-    <!--  <%= link_to 'フォロー', %> <%= link_to 'お気に入り', %>      <!-- フォロー、お気に入りボタン実装-->-->
-    <!--</div>-->
-    
+    <div class="d-flex justify-content-center">
+      <%= render 'relationships/follow_button', user: @user %>
+    </div>
+    <div class="d-flex justify-content-end">
+      <ul class="like1">
+        <li><%= link_to 'フォロー', followings_user_path %></li>
+        <li><%= link_to 'お気に入り', likes_user_path %></li>
+      </ul>
+    </div>
+        
     <hr>
+        
+    <h2 class="text-center practice_time">練習時間</h2>
+    <% if current_user == @user %>
+      <div class="row">
+        <div class="col-4 offset-sm-3 col-sm-3">
+          <h2><span class="badge badge-info">今日</span></h2>
+        </div>
+        <div class="col-8 col-sm-3">
+          <%= form_with(model: @practice, local: true) do |f| %>
+            <div class="form-group row">
+              <div class="col-6">
+                <%= f.number_field :time, min: 1, max: 24, class: "d-inline" %>時間
+              </div>
+              <div class="col-6">
+                <%= f.submit '登録', class: 'btn btn-primary btn-block w-auto' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     
-    <div class="rounded border border-dark">練習時間</div>
+    <div class="row">
+      <div class="col-4 offset-sm-3 col-sm-3">
+        <h2><span class="badge badge-info">合計</span></h2>
+      </div>
+      <div class="col-8 col-sm-3">
+        <%= @user.practices.sum(:time) %>時間
+      </div>
+    </div>
     
-        <div class="col-md-5">col-md-5</div>                                      <!--練習時間登録-->
-        <div class="offset-md-2 col-md-5">offset-md-2 col-md-5</div>
       
-    <button class="btn btn-primary" type="submit">投稿する</button>
+    <% if current_user == @user %>
+      <div class="d-flex justify-content-center toko">
+        <%= link_to '投稿する', new_micropost_path, class: 'btn btn-lg btn-primary w-50' %>
+      </div>
+    <% end %>
+        
+    <h2 class="text-center current_microposts">最新の投稿</h2>
     
-    <div class="rounded border border-dark">最新の投稿</div>
-
-<!--最新の投稿の表示-->
+    <%= render 'microposts/microposts', microposts: @user.microposts %>
+  
   </div>
 </div>

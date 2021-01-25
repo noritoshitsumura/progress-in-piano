@@ -1,12 +1,15 @@
 class MicropostsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
+  def new
+    @micropost = current_user.microposts.build
+  end
   
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = 'メッセージを投稿しました。'
-      redirect_to root_url
+      redirect_to user_path(current_user)
     else
       @microposts = current_user.microposts.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'

@@ -1,0 +1,27 @@
+#profile .user_name{
+  font-size:40px;
+}
+
+#profile .like1 li{
+    display: inline;
+    margin-right: 10px;
+}
+
+#profile .practice_time{
+    padding: 1rem 2rem;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+}
+
+#profile .current_microposts{
+    padding: 1rem 2rem;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    margin-top: 40px;
+}
+
+#profile .toko{
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+

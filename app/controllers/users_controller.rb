@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :edit, :destroy]
+  before_action :require_user_logged_in, only: [:show, :edit]
   def show
     @user = User.find(params[:id])
+    @practice = current_user.practices.build  # form_with 用
   end
 
   def new
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      redirect_to @user
+      redirect_to user_path(current_user)
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
@@ -21,12 +22,22 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
-  end
-
-  def destroy
+    @user = User.find(params[:id])
+    if current_user == @user
+    if @user.update(user_params)
+      flash[:success] = '正常に更新されました'
+      redirect_to user_path(current_user)
+    else
+      flash.now[:danger] = '更新されませんでした'
+      render :edit
+    end
+    else
+       redirect_to root_url
+    end
   end
   
   def followings
@@ -35,9 +46,16 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.likes.page(params[:page])
+    counts(@user)
+  end
+
+  
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end
 end
