@@ -11,9 +11,14 @@
       
       <td>
         <img class="mr-2 rounded" src="<%= user.image.thumb.url({ size: 50 }) %>" alt="">
-      
-        <%= link_to user_path(user) do %>
-          <%= user.name %>
+        <% if logged_in? %>
+          <%= link_to user_path(user) do %>
+            <%= user.name %>
+          <% end %>
+        <% else %>
+          <%= link_to login_path do %>
+            <%= user.name %>
+          <% end %>
         <% end %>
       </td>
       
