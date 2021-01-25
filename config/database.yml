@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: progress-in-piano_production
   username: progress-in-piano
   password: <%= ENV['PROGRESS-IN-PIANO_DATABASE_PASSWORD'] %>
