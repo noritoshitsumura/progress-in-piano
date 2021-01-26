@@ -7,14 +7,14 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   has_secure_password
   
-  has_many :microposts
-  has_many :practices
+  has_many :microposts, dependent: :destroy
+  has_many :practices, dependent: :destroy
   
-  has_many :relationships
-  has_many :followings, through: :relationships, source: :follow
+  has_many :relationships, dependent: :destroy
+  has_many :followings, through: :relationships, source: :follow, dependent: :destroy
   
-  has_many :favorites
-  has_many :likes, through: :favorites, source: :micropost
+  has_many :favorites, dependent: :destroy
+  has_many :likes, through: :favorites, source: :micropost, dependent: :destroy
   
   
   def follow(other_user)

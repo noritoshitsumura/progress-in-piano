@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :edit]
+  before_action :require_user_logged_in, only: [:show, :edit, :destroy]
   def show
     @user = User.find(params[:id])
     @practice = current_user.practices.build  # form_with 用
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      redirect_to user_path(current_user)
+      redirect_to @user
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
@@ -38,6 +38,13 @@ class UsersController < ApplicationController
     else
        redirect_to root_url
     end
+  end
+  
+  def destroy
+    @user = User.find(params[:id]) 
+    @user.destroy
+    flash[:success] = 'ユーザーを削除しました。'
+    redirect_to root_url
   end
   
   def followings
