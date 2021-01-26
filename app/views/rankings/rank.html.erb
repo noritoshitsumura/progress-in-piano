@@ -2,30 +2,32 @@
   <h1>総合ランキング</h1>
 </div>
 
-<table class="table table-striped table-ranking">
-  <% @users.each.with_index(1) do |user,i| %>
-    <tr>
-      <td>
-        第<%= i %>位
-      </td>
-      
-      <td>
-        <img class="mr-2 rounded" src="<%= user.image.thumb.url({ size: 50 }) %>" alt="">
-        <% if logged_in? %>
-          <%= link_to user_path(user) do %>
-            <%= user.name %>
+<% if users.any? %>
+  <table class="table table-striped table-ranking">
+    <% @users.each.with_index(1) do |user,i| %>
+      <tr>
+        <td>
+          第<%= i %>位
+        </td>
+        
+        <td>
+          <img class="mr-2 rounded" src="<%= user.image.thumb.url({ size: 50 }) %>" alt="">
+          <% if logged_in? %>
+            <%= link_to user_path(user) do %>
+              <%= user.name %>
+            <% end %>
+          <% else %>
+            <%= link_to login_path do %>
+              <%= user.name %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to login_path do %>
-            <%= user.name %>
-          <% end %>
-        <% end %>
-      </td>
-      
-      <td>
-        <%= user.practices.sum(:time) %>時間
-      </td>
-    </tr>
-  <% end %>
-</table>
+        </td>
+        
+        <td>
+          <%= user.practices.sum(:time) %>時間
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
 
