@@ -11,7 +11,12 @@
       </td>
       
       <td>
-        <img class="mr-2 rounded" src="<%= user.image.thumb.url({ size: 50 }) %>" alt="">
+        <% if user.image? %>                                                              
+          <img class="mr-2 rounded" src="<%= user.image.thumb.url(user, { size: 50 }) %>" alt="">
+        <% else %>
+          <img src="https://everydayicons.jp/wp/wp-content/themes/everydayicons/icons/thumbs/ei-person.png" width="100px" height="100px">
+        <% end %> 
+        
         <% if logged_in? %>
           <%= link_to user_path(user) do %>
             <%= user.name %>

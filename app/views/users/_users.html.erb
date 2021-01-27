@@ -1,8 +1,16 @@
+<div class="text-center">
+  <h1><%= @user.name %>がフォロー中のユーザー</h1>
+</div>
+
 <% if users.any? %>
   <ul class="list-unstyled">
     <% users.each do |user| %>
       <li class="media">
-        <img class="mr-2 rounded" src="<%= user.image.thumb.url(user, { size: 50 }) %>" alt="">
+        <% if user.image? %>                                                              
+          <img class="mr-2 rounded" src="<%= user.image.thumb.url(user, { size: 50 }) %>" alt="">
+        <% else %>
+          <img src="https://everydayicons.jp/wp/wp-content/themes/everydayicons/icons/thumbs/ei-person.png" width="200px" height="200px">
+        <% end %> 　
         <div class="media-body">
           <div>
             <%= user.name %>

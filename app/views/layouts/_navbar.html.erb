@@ -15,13 +15,13 @@
             <li class="nav-item dropdown">
               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
+                <li class="dropdown-item"><%= link_to 'マイプロフィール', user_path(current_user) %></li>
                 <li class="dropdown-divider"></li>
                 <li class="dropdown-item"><%= link_to '編集', edit_user_path(current_user) %></li>
                 <li class="dropdown-divider"></li>
-                <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
+                <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
                 <li class="dropdown-divider"></li>
-                <li class="dropdown-item"><%= link_to "退会",user_path(current_user.id), class: "destroy-user",method: :delete %></li>
+                <li class="dropdown-item"><%= link_to "退会",user_path(current_user.id), class: "destroy-user",method: :delete, "data-confirm" => "本当に退会しますか？" %></li>
               </ul>
             </li>
           </ul>

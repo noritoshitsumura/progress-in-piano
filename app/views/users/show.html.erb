@@ -4,6 +4,8 @@
       <figure>
         <% if @user.image? %>                                                              
           <%= image_tag @user.image.thumb.url %>
+        <% else %>
+          <img src="https://everydayicons.jp/wp/wp-content/themes/everydayicons/icons/thumbs/ei-person.png" width="200px" height="200px">
         <% end %> 　
         <figcaption class="text-center user_name"><%= @user.name %></figcaption>
       </figure>
