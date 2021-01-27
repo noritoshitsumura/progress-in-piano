@@ -25,3 +25,21 @@
     margin-top: 60px;
 }
 
+#profile .today-time{
+    margin-top: 5px;
+}
+
+#profile .total-time{
+    margin-top: 7px;
+}
+
+
+
+
+.login-title{
+    margin-bottom: 40px;
+}
+
+.register-title{
+    margin-bottom: 40px;
+}
