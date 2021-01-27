@@ -1,7 +1,9 @@
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-
-  <%= render "form" %>
+<% if current_user == @user %>
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
   
+    <%= render "form" %>
+    
+    </div>
   </div>
-</div>
+<% end %>

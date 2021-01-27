@@ -3,16 +3,18 @@ class PracticesController < ApplicationController
   
   
   def new
+    @user = current_user
   end
   
   def create
+    @user = current_user
     @practice = current_user.practices.build(practice_params)
     if @practice.save
       flash[:success] = '練習時間を登録しました。'
       redirect_to user_path(current_user)
     else
-      flash.now[:danger] = '練習時間の登録に失敗しました。'
-      render 'users/show'
+      flash[:danger] = '練習時間を登録して下さい。'
+      redirect_to user_path(current_user)
     end
   end
   

@@ -16,8 +16,8 @@
     </div>
     <div class="d-flex justify-content-end">
       <ul class="like1">
-        <li><%= link_to 'フォロー', followings_user_path %></li>
-        <li><%= link_to 'お気に入り', likes_user_path %></li>
+        <li><%= link_to 'フォロー一覧', followings_user_path(@user) %></li>
+        <li><%= link_to 'お気に入り一覧', likes_user_path(@user) %></li>
       </ul>
     </div>
         
