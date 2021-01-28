@@ -12,5 +12,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb50 do 
     process resize_to_fit: [100, 100] 
   end 
+  
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+  else
+    storage :file
+  end
 
 end
