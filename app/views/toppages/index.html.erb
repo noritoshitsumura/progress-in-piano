@@ -12,7 +12,7 @@
           <% if current_user.image? %>                                                              
             <%= image_tag current_user.image.thumb.url %>
           <% else %>
-            <img alt="" src="/assets/ei-person.png" width="200" height="200">
+            <%= image_tag 'ei-person.png',size: "200x200", alt: "" %>
           <% end %>
         </figure>
       </div>

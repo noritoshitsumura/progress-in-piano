@@ -9,7 +9,7 @@
         <% if user.image? %>                                                              
           <img class="mr-2 rounded" src="<%= user.image.thumb.url %>" alt="">
         <% else %>
-          <img alt="" src="/assets/ei-person.png" width="200" height="200">
+          <%= image_tag 'ei-person.png',size: "200x200", alt: "" %>
         <% end %> 　
         <div class="media-body">
           <div>
