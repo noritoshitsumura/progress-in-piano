@@ -3,9 +3,9 @@
     <div class="d-flex justify-content-center">
       <figure>
         <% if @user.image? %>                                                              
-          <%= image_tag @user.image.thumb.url %>
+          <img class="mr-2 rounded" src="<%= @user.image.thumb.url %>" alt="">
         <% else %>
-          <img src="https://everydayicons.jp/wp/wp-content/themes/everydayicons/icons/thumbs/ei-person.png" alt='' width="200" height="200">
+          <img src="https://everydayicons.jp/wp/wp-content/themes/everydayicons/icons/thumbs/ei-person.png" alt="" width="200" height="200">
         <% end %> 　
         <figcaption class="text-center user_name"><%= @user.name %></figcaption>
       </figure>
