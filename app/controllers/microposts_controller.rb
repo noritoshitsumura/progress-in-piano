@@ -12,8 +12,8 @@ class MicropostsController < ApplicationController
       redirect_to user_path(current_user)
     else
       @microposts = current_user.microposts.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージを投稿してください。また、投稿できるのは255文字までです。'
-      render :new
+      flash[:danger] = 'メッセージを投稿してください。また、投稿できるのは255文字までです。'
+      redirect_to new_micropost_path(current_user)
     end
   end
 
