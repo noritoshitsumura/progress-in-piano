@@ -14,7 +14,7 @@
         <% if user.image? %>                                                              
           <img class="mr-2 rounded" src="<%= user.image.thumb.url %>" alt="">
         <% else %>
-          <img src="https://everydayicons.jp/wp/wp-content/themes/everydayicons/icons/thumbs/ei-person.png" width="100px" height="100px">
+          <img src="https://everydayicons.jp/wp/wp-content/themes/everydayicons/icons/thumbs/ei-person.png" alt="" width="100" height="100">
         <% end %> 
         
         <% if logged_in? %>
