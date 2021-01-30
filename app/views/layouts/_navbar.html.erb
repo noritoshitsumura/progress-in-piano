@@ -23,7 +23,7 @@
               <li class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
               <li class="dropdown-divider"></li>
-              <li class="dropdown-item"><%= link_to "退会",user_path(current_user.id), class: "destroy-user",method: :delete, "data-confirm" => "本当に退会しますか？" %></li>
+              <li class="dropdown-item"><%= link_to "退会",user_path(current_user.id), class: "destroy-user",method: :delete, "data-confirm" => "データや投稿は全て削除され、復元できませんがよろしいですか？" %></li>
             </ul>
           </li>
         </ul>

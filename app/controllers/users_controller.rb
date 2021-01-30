@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       flash[:success] = '正常に更新されました'
       redirect_to user_path(current_user)
     else
-      flash.now[:danger] = '更新されませんでした'
+      flash.now[:danger] = '更新に失敗しました'
       render :edit
     end
     else
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id]) 
     @user.destroy
-    flash[:success] = 'ユーザーを削除しました。'
+    flash[:success] = '退会しました。'
     redirect_to root_url
   end
   
